@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Stylish & Animated Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            position: relative;
+            perspective: 1000px; /* For 3D effect on the button */
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleAnimation 5s infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes particleAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeInUp 2s ease-out;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards, pulsate 3s infinite;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes pulsate {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        p {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        .cta-button {
+            position: relative;
+            display: inline-block;
+            padding: 20px 40px;
+            background: linear-gradient(to right, #FFC300, #FFD700);
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.5em;
+            overflow: hidden;
+            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            animation: pulse 1.5s infinite, slideIn 1s ease-out, button3D 1s ease-out;
+            animation-delay: 1.5s;
+            z-index: 1;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FFC300;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(to left, #FFC300, #FFD700);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes button3D {
+            0%, 100% {
+                transform: perspective(1000px) rotateX(0);
+            }
+            50% {
+                transform: perspective(1000px) rotateX(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <!-- Add particle elements dynamically using JavaScript for a futuristic effect -->
+    </div>
+
+    <div class="container">
+        <h1>Your Ultimate Website</h1>
+        <p>Welcome to the most stylish and animated website in history!</p>
+        <a href="#" class="cta-button" onclick="navigateToNextPage()"><span>Get Started</span></a>
+    </div>
+
+    <script>
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const numberOfParticles = 50;
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${Math.random() * 10}px`;
+                particle.style.height = particle.style.width;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        function navigateToNextPage() {
+            // Add any logic or API calls if needed before navigating
+            // For simplicity, I'm redirecting to a new HTML page after a delay
+            setTimeout(() => {
+                window.location.href = 'second_page.html';
+            }, 1000); // Add a delay for the transition effect
+        }
+    </script>
+</body>
+</html>
